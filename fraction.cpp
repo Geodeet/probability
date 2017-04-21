@@ -22,26 +22,17 @@ void Fraction::_simplify( void ) {
   }
   
   // Now we apply the algorithm of Euclid
-  long long int abs_numer = std::abs( _numer );
-  long long int dividend, divisor, old_divisor;
+  long long int a = std::abs( _numer );
+  long long int b = _denom;
   
-  if( abs_numer > _denom ) {
-    dividend = abs_numer;
-    divisor = _denom;
-  }
-  else {
-    dividend = _denom;
-    divisor = abs_numer;
-  }
+  while(a != b)
+    if(a > b)
+      a -= b;
+    else
+      b -= a;
   
-  while( divisor != 0 ) {
-    old_divisor = divisor;
-    divisor = dividend % divisor;
-    dividend = old_divisor;
-  }
-  
-  _numer /= dividend;
-  _denom /= dividend;
+  _numer /= a;
+  _denom /= a;
 }
 
 // Default constructor
