@@ -1,0 +1,7 @@
+include_rules
+
+# The rule to compile cpp files to object files
+: foreach *.cpp |> !compile_files |>
+
+# Linking the object files into an executable
+: *.o |> !link_objects |> prob

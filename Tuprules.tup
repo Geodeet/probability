@@ -1,0 +1,12 @@
+CFLAGS += -Wall
+#CFLAGS += -O2
+CFLAGS += -std=c++11
+CFLAGS += -g
+
+#LFLAGS += -v
+
+#COMPILER = clang++
+COMPILER = g++
+!compile_files = |> $(COMPILER) $(CFLAGS) -c %f -o %o |> %B.o
+!make_lib = |> ar crs $(LFLAGS) %o %f |>
+!link_objects = |> $(COMPILER) $(LFLAGS) %f -o %o |>
