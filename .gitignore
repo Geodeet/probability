@@ -1,3 +1,5 @@
 .tup
 *.o
 .vscode
+test
+prob

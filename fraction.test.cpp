@@ -2,62 +2,54 @@
 
 #include "fraction.hpp"
 
-TEST_CASE("fraction creation", "[fraction]")
+TEST_CASE("fraction creation from void", "[fraction]")
 {
-    SECTION("from void")
-    {
-        Fraction f;
+    Fraction f;
 
-        REQUIRE(f.as_string() == "1");
-    }
+    REQUIRE(f.as_string() == "1");
+}
 
-    SECTION("from integer")
-    {
-        Fraction f1(1), f2(2), f3(3), fm4(-4), fm5(-5);
+TEST_CASE("fraction creation from integer", "[fraction]")
+{
+    Fraction f1(1), f2(2), f3(3), fm4(-4), fm5(-5);
 
-        REQUIRE(f1.get_numerator() == 1);
-        REQUIRE(f1.get_denomenator() == 1);
-        REQUIRE(f2.get_numerator() == 2);
-        REQUIRE(f2.get_denomenator() == 1);
-        REQUIRE(f3.get_numerator() == 3);
-        REQUIRE(f3.get_denomenator() == 1);
-        REQUIRE(fm4.get_numerator() == -4);
-        REQUIRE(fm4.get_denomenator() == 1);
-        REQUIRE(fm5.get_numerator() == -5);
-        REQUIRE(fm5.get_denomenator() == 1);
-    }
+    REQUIRE(f1.get_numerator() == 1);
+    REQUIRE(f1.get_denomenator() == 1);
+    REQUIRE(f2.get_numerator() == 2);
+    REQUIRE(f2.get_denomenator() == 1);
+    REQUIRE(f3.get_numerator() == 3);
+    REQUIRE(f3.get_denomenator() == 1);
+    REQUIRE(fm4.get_numerator() == -4);
+    REQUIRE(fm4.get_denomenator() == 1);
+    REQUIRE(fm5.get_numerator() == -5);
+    REQUIRE(fm5.get_denomenator() == 1);
+}
 
-    SECTION("from double")
-    {
-        FAIL("unimplemented test");
-    }
+TEST_CASE("fraction creation from fraction", "[fraction]")
+{
+    Fraction f1(5, 1), f2(6, 5), f3(5, 6);
+    Fraction f1c(f1), f2c(f2), f3c(f3);
 
-    SECTION("from fraction")
-    {
-        Fraction f1(5, 1), f2(6, 5), f3(5, 6);
-        Fraction f1c(f1), f2c(f2), f3c(f3);
+    REQUIRE(f1c.get_numerator() == 5);
+    REQUIRE(f1c.get_denomenator() == 1);
+    REQUIRE(f2c.get_numerator() == 6);
+    REQUIRE(f2c.get_denomenator() == 5);
+    REQUIRE(f3c.get_numerator() == 5);
+    REQUIRE(f3c.get_denomenator() == 6);
+}
 
-        REQUIRE(f1c.get_numerator() == 5);
-        REQUIRE(f1c.get_denomenator() == 1);
-        REQUIRE(f2c.get_numerator() == 6);
-        REQUIRE(f2c.get_denomenator() == 5);
-        REQUIRE(f3c.get_numerator() == 5);
-        REQUIRE(f3c.get_denomenator() == 6);
-    }
+TEST_CASE("fraction creation from numerator & denominator", "[fraction]")
+{
+    Fraction f1(2, 2), f2(2, 4), f3(512, 1024), f4(3, 5);
 
-    SECTION("from numerator & denominator")
-    {
-        Fraction f1(2, 2), f2(2, 4), f3(512, 1024), f4(3, 5);
-
-        REQUIRE(f1.get_numerator() == 1);
-        REQUIRE(f1.get_denomenator() == 1);
-        REQUIRE(f2.get_numerator() == 1);
-        REQUIRE(f2.get_denomenator() == 2);
-        REQUIRE(f3.get_numerator() == 1);
-        REQUIRE(f3.get_denomenator() == 2);
-        REQUIRE(f4.get_numerator() == 3);
-        REQUIRE(f4.get_denomenator() == 5);
-    }
+    REQUIRE(f1.get_numerator() == 1);
+    REQUIRE(f1.get_denomenator() == 1);
+    REQUIRE(f2.get_numerator() == 1);
+    REQUIRE(f2.get_denomenator() == 2);
+    REQUIRE(f3.get_numerator() == 1);
+    REQUIRE(f3.get_denomenator() == 2);
+    REQUIRE(f4.get_numerator() == 3);
+    REQUIRE(f4.get_denomenator() == 5);
 }
 
 TEST_CASE("fraction displaying", "[fraction]")
@@ -67,4 +59,162 @@ TEST_CASE("fraction displaying", "[fraction]")
     REQUIRE(f1.as_string() == "1");
     REQUIRE(f2.as_string() == "4");
     REQUIRE(f3.as_string() == "5 / 6");
+}
+
+TEST_CASE("fraction absolute value", "[fraction]")
+{
+    Fraction f1(2, 5), f2(-4, 7), f3(-5, -8), f4(7, -9);
+
+    REQUIRE(f1.abs().get_numerator() == 2);
+    REQUIRE(f1.abs().get_denomenator() == 5);
+    REQUIRE(f2.abs().get_numerator() == 4);
+    REQUIRE(f2.abs().get_denomenator() == 7);
+    REQUIRE(f3.abs().get_numerator() == 5);
+    REQUIRE(f3.abs().get_denomenator() == 8);
+    REQUIRE(f4.abs().get_numerator() == 7);
+    REQUIRE(f4.abs().get_denomenator() == 9);
+}
+
+TEST_CASE("fraction rounding", "[fraction]")
+{
+    Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
+
+    REQUIRE(f1.round() == 4);
+    REQUIRE(f2.round() == 1);
+    REQUIRE(f3.round() == 1);
+    REQUIRE(f4.round() == 2);
+    REQUIRE(f5.round() == 2);
+}
+
+TEST_CASE("fraction flooring", "[fraction]")
+{
+    Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
+
+    REQUIRE(f1.floor() == 4);
+    REQUIRE(f2.floor() == 0);
+    REQUIRE(f3.floor() == 1);
+    REQUIRE(f4.floor() == 1);
+    REQUIRE(f5.floor() == 2);
+}
+
+TEST_CASE("fraction ceiling", "[fraction]")
+{
+    Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
+
+    REQUIRE(f1.ceil() == 4);
+    REQUIRE(f2.ceil() == 1);
+    REQUIRE(f3.ceil() == 2);
+    REQUIRE(f4.ceil() == 2);
+    REQUIRE(f5.ceil() == 3);
+}
+
+TEST_CASE("fraction as double", "[fraction]")
+{
+    Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
+
+    REQUIRE(f1.as_double() == 4.0);
+    REQUIRE(f2.as_double() == 0.8);
+    REQUIRE(f3.as_double() == 1.2);
+    REQUIRE(f4.as_double() == 1.6);
+    REQUIRE(f5.as_double() == 2.2);
+}
+
+TEST_CASE("fraction powers", "[fraction]")
+{
+    Fraction f1(2), f2(1, 2), f3(6, 5);
+
+    REQUIRE(f1.pow(4).get_numerator() == 16);
+    REQUIRE(f1.pow(4).get_denomenator() == 1);
+    REQUIRE(f2.pow(4).get_numerator() == 1);
+    REQUIRE(f2.pow(4).get_denomenator() == 16);
+    REQUIRE(f3.pow(4).get_numerator() == 1296);
+    REQUIRE(f3.pow(4).get_denomenator() == 625);
+}
+
+TEST_CASE("fraction assignment addition", "[fraction]")
+{
+    Fraction f1(2), f2(1, 3), f3(5, 3);
+    Fraction other(1, 3);
+
+    f1 += other;
+    f2 += other;
+    f3 += other;
+
+    REQUIRE(f1.get_numerator() == 7);
+    REQUIRE(f1.get_denomenator() == 3);
+    REQUIRE(f2.get_numerator() == 2);
+    REQUIRE(f2.get_denomenator() == 3);
+    REQUIRE(f3.get_numerator() == 2);
+    REQUIRE(f3.get_denomenator() == 1);
+}
+
+TEST_CASE("fraction assignment subtraction", "[fraction]")
+{
+    Fraction f1(2), f2(1, 3), f3(5, 3);
+    Fraction other(1, 3);
+
+    f1 -= other;
+    f2 -= other;
+    f3 -= other;
+
+    REQUIRE(f1.get_numerator() == 5);
+    REQUIRE(f1.get_denomenator() == 3);
+    REQUIRE(f2.get_numerator() == 0);
+    REQUIRE(f2.get_denomenator() == 1);
+    REQUIRE(f3.get_numerator() == 4);
+    REQUIRE(f3.get_denomenator() == 3);
+}
+
+TEST_CASE("fraction assignment multiplication", "[fraction]")
+{
+    Fraction f1(2), f2(1, 3), f3(5, 3);
+    Fraction other(1, 3);
+
+    f1 *= other;
+    f2 *= other;
+    f3 *= other;
+
+    REQUIRE(f1.get_numerator() == 2);
+    REQUIRE(f1.get_denomenator() == 3);
+    REQUIRE(f2.get_numerator() == 1);
+    REQUIRE(f2.get_denomenator() == 9);
+    REQUIRE(f3.get_numerator() == 5);
+    REQUIRE(f3.get_denomenator() == 9);
+}
+
+TEST_CASE("fraction assignment division", "[fraction]")
+{
+    Fraction f1(2), f2(1, 3), f3(5, 3);
+    Fraction other(1, 3);
+
+    f1 /= other;
+    f2 /= other;
+    f3 /= other;
+
+    REQUIRE(f1.get_numerator() == 6);
+    REQUIRE(f1.get_denomenator() == 1);
+    REQUIRE(f2.get_numerator() == 1);
+    REQUIRE(f2.get_denomenator() == 1);
+    REQUIRE(f3.get_numerator() == 5);
+    REQUIRE(f3.get_denomenator() == 1);
+}
+
+TEST_CASE("fraction assignment modulo", "[fraction]")
+{
+    Fraction f1(2), f2(1, 3), f3(5, 3), f4(1, 2);
+    Fraction other(1, 3);
+
+    f1 %= other;
+    f2 %= other;
+    f3 %= other;
+    f4 %= other;
+
+    REQUIRE(f1.get_numerator() == 0);
+    REQUIRE(f1.get_denomenator() == 1);
+    REQUIRE(f2.get_numerator() == 0);
+    REQUIRE(f2.get_denomenator() == 1);
+    REQUIRE(f3.get_numerator() == 0);
+    REQUIRE(f3.get_denomenator() == 1);
+    REQUIRE(f4.get_numerator() == 1);
+    REQUIRE(f4.get_denomenator() == 6);
 }

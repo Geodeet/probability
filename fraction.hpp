@@ -25,7 +25,6 @@ public:
   // Constructors
   Fraction(void);
   Fraction(const int num);
-  Fraction(const double num); // NOT YET IMPLEMENTED (will produce the closest fraction to a given double)
   Fraction(const Fraction &frac);
   Fraction(const int numer, const int denom);
 
