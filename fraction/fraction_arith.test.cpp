@@ -2,7 +2,7 @@
 
 #include "fraction_arith.hpp"
 
-TEST_CASE("addition", "[fraction][arithmetic]")
+TEST_CASE("fraction addition", "[fraction][arithmetic]")
 {
     Fraction f1(1, 2), f2(3, 4), f3(-5, 7), f4(-1, 3);
 
@@ -18,7 +18,7 @@ TEST_CASE("addition", "[fraction][arithmetic]")
     REQUIRE(res3.get_denomenator() == 21);
 }
 
-TEST_CASE("subtraction", "[fraction][arithmetic]")
+TEST_CASE("fraction subtraction", "[fraction][arithmetic]")
 {
     Fraction f1(1, 2), f2(3, 4), f3(-5, 7), f4(-1, 3);
 
@@ -34,7 +34,7 @@ TEST_CASE("subtraction", "[fraction][arithmetic]")
     REQUIRE(res3.get_denomenator() == 21);
 }
 
-TEST_CASE("multiplication", "[fraction][arithmetic]")
+TEST_CASE("fraction multiplication", "[fraction][arithmetic]")
 {
     Fraction f1(1, 2), f2(3, 4), f3(-5, 7), f4(-1, 3);
 
@@ -50,7 +50,7 @@ TEST_CASE("multiplication", "[fraction][arithmetic]")
     REQUIRE(res3.get_denomenator() == 21);
 }
 
-TEST_CASE("division", "[fraction][arithmetic]")
+TEST_CASE("fraction division", "[fraction][arithmetic]")
 {
     Fraction f1(1, 2), f2(3, 4), f3(-5, 7), f4(-1, 3);
 
@@ -66,7 +66,7 @@ TEST_CASE("division", "[fraction][arithmetic]")
     REQUIRE(res3.get_denomenator() == 7);
 }
 
-TEST_CASE("modulo", "[fraction][arithmetic]")
+TEST_CASE("fraction modulo", "[fraction][arithmetic]")
 {
     Fraction f1(1, 2), f2(3, 4), f3(-5, 7), f4(-1, 3);
 
@@ -82,7 +82,7 @@ TEST_CASE("modulo", "[fraction][arithmetic]")
     REQUIRE(res3.get_denomenator() == 21);
 }
 
-TEST_CASE("integer addition", "[fraction][arithmetic]")
+TEST_CASE("fraction integer addition", "[fraction][arithmetic]")
 {
     Fraction f(1, 3);
 
@@ -95,7 +95,7 @@ TEST_CASE("integer addition", "[fraction][arithmetic]")
     REQUIRE(res2.get_denomenator() == 3);
 }
 
-TEST_CASE("integer subtraction", "[fraction][arithmetic]")
+TEST_CASE("fraction integer subtraction", "[fraction][arithmetic]")
 {
     Fraction f(1, 3);
 
@@ -108,7 +108,7 @@ TEST_CASE("integer subtraction", "[fraction][arithmetic]")
     REQUIRE(res2.get_denomenator() == 3);
 }
 
-TEST_CASE("integer multiplication", "[fraction][arithmetic]")
+TEST_CASE("fraction integer multiplication", "[fraction][arithmetic]")
 {
     Fraction f(1, 3);
 
@@ -121,7 +121,7 @@ TEST_CASE("integer multiplication", "[fraction][arithmetic]")
     REQUIRE(res2.get_denomenator() == 3);
 }
 
-TEST_CASE("integer division", "[fraction][arithmetic]")
+TEST_CASE("fraction integer division", "[fraction][arithmetic]")
 {
     Fraction f(1, 3);
 
@@ -134,7 +134,7 @@ TEST_CASE("integer division", "[fraction][arithmetic]")
     REQUIRE(res2.get_denomenator() == 1);
 }
 
-TEST_CASE("integer modulo", "[fraction][arithmetic]")
+TEST_CASE("fraction integer modulo", "[fraction][arithmetic]")
 {
     Fraction f(1, 3);
 
@@ -147,7 +147,7 @@ TEST_CASE("integer modulo", "[fraction][arithmetic]")
     REQUIRE(res2.get_denomenator() == 1);
 }
 
-TEST_CASE("equality", "[fraction][arithmetic]")
+TEST_CASE("fraction equality", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(-1, 3), f3(-1, 3), f4(-2, 5), f5(1, 5);
 
@@ -157,7 +157,7 @@ TEST_CASE("equality", "[fraction][arithmetic]")
     REQUIRE(!(f4 == f5));
 }
 
-TEST_CASE("inequality", "[fraction][arithmetic]")
+TEST_CASE("fraction inequality", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(-1, 3), f3(-1, 3), f4(-2, 5), f5(1, 5);
 
@@ -167,7 +167,7 @@ TEST_CASE("inequality", "[fraction][arithmetic]")
     REQUIRE((f4 != f5));
 }
 
-TEST_CASE("less than", "[fraction][arithmetic]")
+TEST_CASE("fraction less than", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(-1, 3), f3(-1, 3), f4(-2, 5), f5(1, 5);
 
@@ -177,7 +177,7 @@ TEST_CASE("less than", "[fraction][arithmetic]")
     REQUIRE((f4 < f5));
 }
 
-TEST_CASE("greater than", "[fraction][arithmetic]")
+TEST_CASE("fraction greater than", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(-1, 3), f3(-1, 3), f4(-2, 5), f5(1, 5);
 
@@ -187,7 +187,7 @@ TEST_CASE("greater than", "[fraction][arithmetic]")
     REQUIRE(!(f4 > f5));
 }
 
-TEST_CASE("less than equal", "[fraction][arithmetic]")
+TEST_CASE("fraction less than equal", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(-1, 3), f3(-1, 3), f4(-2, 5), f5(1, 5);
 
@@ -197,7 +197,7 @@ TEST_CASE("less than equal", "[fraction][arithmetic]")
     REQUIRE((f4 <= f5));
 }
 
-TEST_CASE("greater than equal", "[fraction][arithmetic]")
+TEST_CASE("fraction greater than equal", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(-1, 3), f3(-1, 3), f4(-2, 5), f5(1, 5);
 
@@ -207,7 +207,7 @@ TEST_CASE("greater than equal", "[fraction][arithmetic]")
     REQUIRE(!(f4 >= f5));
 }
 
-TEST_CASE("integer equality", "[fraction][arithmetic]")
+TEST_CASE("fraction integer equality", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(4, 3), f3(-3, 5), f4(4);
 
@@ -217,7 +217,7 @@ TEST_CASE("integer equality", "[fraction][arithmetic]")
     REQUIRE((f4 == 4));
 }
 
-TEST_CASE("integer inequality", "[fraction][arithmetic]")
+TEST_CASE("fraction integer inequality", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(4, 3), f3(-3, 5), f4(4);
 
@@ -227,7 +227,7 @@ TEST_CASE("integer inequality", "[fraction][arithmetic]")
     REQUIRE(!(f4 != 4));
 }
 
-TEST_CASE("integer less than", "[fraction][arithmetic]")
+TEST_CASE("fraction integer less than", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(4, 3), f3(-3, 5), f4(4);
 
@@ -242,7 +242,7 @@ TEST_CASE("integer less than", "[fraction][arithmetic]")
     REQUIRE((f4 < 5));
 }
 
-TEST_CASE("integer greater than", "[fraction][arithmetic]")
+TEST_CASE("fraction integer greater than", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(4, 3), f3(-3, 5), f4(4);
 
@@ -257,7 +257,7 @@ TEST_CASE("integer greater than", "[fraction][arithmetic]")
     REQUIRE(!(f4 > 5));
 }
 
-TEST_CASE("integer less than equal", "[fraction][arithmetic]")
+TEST_CASE("fraction integer less than equal", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(4, 3), f3(-3, 5), f4(4);
 
@@ -272,7 +272,7 @@ TEST_CASE("integer less than equal", "[fraction][arithmetic]")
     REQUIRE((f4 <= 5));
 }
 
-TEST_CASE("integer greater than equal", "[fraction][arithmetic]")
+TEST_CASE("fraction integer greater than equal", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(4, 3), f3(-3, 5), f4(4);
 

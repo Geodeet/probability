@@ -1,56 +1,56 @@
-#include "outcome.h"
+#include "outcome.hpp"
 
 // Default constructor
 Outcome::Outcome( void ) {
-  _value = Fraction( 1 );
-  _probability = Fraction( 1 );
+  value = Fraction( 1 );
+  probability = Fraction( 1 );
 };
 
 // Copy constructor
 Outcome::Outcome( const Outcome &other ) {
-  _value = other._value; 
-  _probability = other._probability;
+  value = other.value; 
+  probability = other.probability;
 };
 
 // Copy constructor from just a value
-Outcome::Outcome( const int value ) {
-  _value = Fraction( value );
-  _probability = Fraction( 1 );
+Outcome::Outcome( const int nvalue ) {
+  value = Fraction( nvalue );
+  probability = Fraction( 1 );
 }
 
 // Copy constructor from just a value
-Outcome::Outcome( const Fraction &value ) {
-  _value = value;
-  _probability = Fraction( 1 );
+Outcome::Outcome( const Fraction &nvalue ) {
+  value = nvalue;
+  probability = Fraction( 1 );
 }
 
 // Copy constructor from separate values
-Outcome::Outcome( const int value, const int probability ) {
-  _value = Fraction( value );
-  _probability = Fraction( probability );
+Outcome::Outcome( const int nvalue, const int nprobability ) {
+  value = Fraction( nvalue );
+  probability = Fraction( nprobability );
 }
 
 // Copy constructor from separate values
-Outcome::Outcome( const Fraction &value, const int probability ) {
-  _value = value;
-  _probability = Fraction( probability );
+Outcome::Outcome( const Fraction &nvalue, const int nprobability ) {
+  value = nvalue;
+  probability = Fraction( nprobability );
 }
 
 // Copy constructor from separate values
-Outcome::Outcome( const int value, const Fraction &probability ) {
-  _value = Fraction( value );
-  _probability = probability;
+Outcome::Outcome( const int nvalue, const Fraction &nprobability ) {
+  value = Fraction( nvalue );
+  probability = nprobability;
 };
 
 // Copy constructor from separate values
-Outcome::Outcome( const Fraction &value, const Fraction &probability ) {
-  _value = value;
-  _probability = probability;
+Outcome::Outcome( const Fraction &nvalue, const Fraction &nprobability ) {
+  value = nvalue;
+  probability = nprobability;
 };
 
 // Comparison operator
 bool operator== ( const Outcome &A, const Outcome &B ) {
-  return (A._value == B._value);
+  return (A.value == B.value);
 };
 
 // Unequal comparison operator
@@ -60,7 +60,7 @@ bool operator!= ( const Outcome &A, const Outcome &B ) {
 
 // Less than comparison operator
 bool operator< ( const Outcome &A, const Outcome &B ) {
-  return (A._value < B._value);
+  return (A.value < B.value);
 };
 
 // Greater than comparison operator
