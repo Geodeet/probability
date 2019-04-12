@@ -308,13 +308,13 @@ double Fraction::as_double(void) const
 }
 
 // Return a copy of the numerator
-inline long long int Fraction::get_numerator(void) const
+long long int Fraction::get_numerator(void) const
 {
   return _numer;
 }
 
 // Return a copy of the denomenator
-inline long long int Fraction::get_denomenator(void) const
+long long int Fraction::get_denomenator(void) const
 {
   return _denom;
 }
@@ -359,7 +359,15 @@ std::string Fraction::as_string(void) const
 // Print fraction to std out
 void Fraction::print(void) const
 {
-  std::cout << _numer << " / " << _denom << std::endl;
+  std::cout << this->as_string();
+}
+
+// Streaming operator
+std::ostream& Fraction::operator<<(std::ostream &os) const
+{
+  os << this->as_string();
+
+  return os;
 }
 
 // ======================== ARITHMETIC FUNCTIONS ==============================

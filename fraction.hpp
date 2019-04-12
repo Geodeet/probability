@@ -5,6 +5,8 @@
     Also some pretty printing is supplied
 */
 
+// TODO make fraction generic?
+
 #pragma once
 
 #include <iostream>
@@ -33,14 +35,14 @@ public:
   long long int floor(void) const;
   long long int ceil(void) const;
   double as_double(void) const;
-  inline long long int get_numerator(void) const;
-  inline long long int get_denomenator(void) const;
+  long long int get_numerator(void) const;
+  long long int get_denomenator(void) const;
   Fraction pow(int exponent) const;
 
   // Displaying the number
   std::string as_string(void) const;
   void print(void) const;
-  std::ostream operator<<(std::ostream &os) const;
+  std::ostream& operator<<(std::ostream &os) const;
 
   // Assignment arithmetic
   Fraction &operator+=(const Fraction &other);
