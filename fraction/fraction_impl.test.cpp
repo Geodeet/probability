@@ -1,6 +1,6 @@
 #include <catch.hpp>
 
-#include "fraction.hpp"
+#include "fraction_impl.hpp"
 
 TEST_CASE("fraction creation from void", "[fraction]")
 {
@@ -305,4 +305,60 @@ TEST_CASE("fraction integer assignment modulo", "[fraction]")
     REQUIRE(f3.get_denomenator() == 3);
     REQUIRE(f4.get_numerator() == 1);
     REQUIRE(f4.get_denomenator() == 2);
+}
+
+TEST_CASE("fraction unary operator", "[fraction]")
+{
+    Fraction f(3, 4);
+
+    REQUIRE((-f).get_numerator() == -3);
+    REQUIRE((-f).get_denomenator() == 4);
+}
+
+TEST_CASE("fraction assignment", "[fraction]")
+{
+    Fraction f(1, 3);
+
+    f = Fraction(2, 5);
+
+    REQUIRE(f.get_numerator() == 2);
+    REQUIRE(f.get_denomenator() == 5);
+}
+
+TEST_CASE("fraction integer assignment", "[fraction]")
+{
+    Fraction f(1, 3);
+
+    f = 4;
+
+    REQUIRE(f.get_numerator() == 4);
+    REQUIRE(f.get_denomenator() == 1);
+}
+
+TEST_CASE("fraction increment and decrement", "[fraction]")
+{
+    Fraction f(1, 11);
+
+    REQUIRE(f.get_numerator() == 1);
+    REQUIRE(f.get_denomenator() == 11);
+
+    f++;
+
+    REQUIRE(f.get_numerator() == 2);
+    REQUIRE(f.get_denomenator() == 11);
+
+    ++f;
+
+    REQUIRE(f.get_numerator() == 3);
+    REQUIRE(f.get_denomenator() == 11);
+
+    f--;
+
+    REQUIRE(f.get_numerator() == 2);
+    REQUIRE(f.get_denomenator() == 11);
+
+    --f;
+
+    REQUIRE(f.get_numerator() == 1);
+    REQUIRE(f.get_denomenator() == 11);
 }

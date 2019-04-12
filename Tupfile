@@ -4,5 +4,5 @@ include_rules
 : foreach *.cpp |> !compile_files |>
 
 # Linking the object files into an executable
-: test.o fraction.o fraction.test.o |> !link_objects |> test
+: test.o fraction/fraction_impl.o fraction/fraction_arith.o fraction/fraction_impl.test.o |> !link_objects |> test
 : main.o |> !link_objects |> prob
