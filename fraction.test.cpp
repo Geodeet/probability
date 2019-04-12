@@ -218,3 +218,91 @@ TEST_CASE("fraction assignment modulo", "[fraction]")
     REQUIRE(f4.get_numerator() == 1);
     REQUIRE(f4.get_denomenator() == 6);
 }
+
+TEST_CASE("fraction integer assignment addition", "[fraction]")
+{
+    Fraction f1(2), f2(1, 3), f3(5, 3);
+    int other(3);
+
+    f1 += other;
+    f2 += other;
+    f3 += other;
+
+    REQUIRE(f1.get_numerator() == 5);
+    REQUIRE(f1.get_denomenator() == 1);
+    REQUIRE(f2.get_numerator() == 10);
+    REQUIRE(f2.get_denomenator() == 3);
+    REQUIRE(f3.get_numerator() == 14);
+    REQUIRE(f3.get_denomenator() == 3);
+}
+
+TEST_CASE("fraction integer assignment subtraction", "[fraction]")
+{
+    Fraction f1(2), f2(1, 3), f3(5, 3);
+    int other(3);
+
+    f1 -= other;
+    f2 -= other;
+    f3 -= other;
+
+    REQUIRE(f1.get_numerator() == -1);
+    REQUIRE(f1.get_denomenator() == 1);
+    REQUIRE(f2.get_numerator() == -8);
+    REQUIRE(f2.get_denomenator() == 3);
+    REQUIRE(f3.get_numerator() == -4);
+    REQUIRE(f3.get_denomenator() == 3);
+}
+
+TEST_CASE("fraction integer assignment multiplication", "[fraction]")
+{
+    Fraction f1(2), f2(1, 3), f3(5, 3);
+    int other(3);
+
+    f1 *= other;
+    f2 *= other;
+    f3 *= other;
+
+    REQUIRE(f1.get_numerator() == 6);
+    REQUIRE(f1.get_denomenator() == 1);
+    REQUIRE(f2.get_numerator() == 1);
+    REQUIRE(f2.get_denomenator() == 1);
+    REQUIRE(f3.get_numerator() == 5);
+    REQUIRE(f3.get_denomenator() == 1);
+}
+
+TEST_CASE("fraction integer assignment division", "[fraction]")
+{
+    Fraction f1(2), f2(1, 3), f3(5, 3);
+    Fraction other(3);
+
+    f1 /= other;
+    f2 /= other;
+    f3 /= other;
+
+    REQUIRE(f1.get_numerator() == 2);
+    REQUIRE(f1.get_denomenator() == 3);
+    REQUIRE(f2.get_numerator() == 1);
+    REQUIRE(f2.get_denomenator() == 9);
+    REQUIRE(f3.get_numerator() == 5);
+    REQUIRE(f3.get_denomenator() == 9);
+}
+
+TEST_CASE("fraction integer assignment modulo", "[fraction]")
+{
+    Fraction f1(2), f2(1, 3), f3(5, 3), f4(1, 2);
+    Fraction other(1);
+
+    f1 %= other;
+    f2 %= other;
+    f3 %= other;
+    f4 %= other;
+
+    REQUIRE(f1.get_numerator() == 0);
+    REQUIRE(f1.get_denomenator() == 1);
+    REQUIRE(f2.get_numerator() == 1);
+    REQUIRE(f2.get_denomenator() == 3);
+    REQUIRE(f3.get_numerator() == 2);
+    REQUIRE(f3.get_denomenator() == 3);
+    REQUIRE(f4.get_numerator() == 1);
+    REQUIRE(f4.get_denomenator() == 2);
+}
