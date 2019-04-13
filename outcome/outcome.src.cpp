@@ -78,3 +78,9 @@ bool operator>= ( const Outcome &A, const Outcome &B ) {
   return !(A < B);
 };
 
+std::ostream& operator<<(std::ostream &os, const Outcome outcome)
+{
+  os << "(" << outcome.value << "," << outcome.probability << ")";
+
+  return os;
+}

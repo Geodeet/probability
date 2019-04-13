@@ -1,3 +1,4 @@
 include_rules
 
-: foreach *.cpp |> !cpp |> %B.o ../<outcome>
+: foreach *.src.cpp |> !cpp |> %B.o ../<src>
+: foreach *.test.cpp |> !cpp |> %B.o ../<test>

@@ -363,9 +363,9 @@ void Fraction::print(void) const
 }
 
 // Streaming operator
-std::ostream& Fraction::operator<<(std::ostream &os) const
+std::ostream& operator<<(std::ostream &os, const Fraction fraction)
 {
-  os << this->as_string();
+  os << fraction.as_string();
 
   return os;
 }

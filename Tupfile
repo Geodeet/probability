@@ -4,4 +4,5 @@ include_rules
 : foreach *.cpp |> !cpp |>
 
 # Linking the object files into an executable
-: test.o | <fraction> <outcome> <util> |> $(COMPILER) $(LFLAGS) %f %<fraction> %<outcome> %<util> -o %o |> test
+: test.o | <src> <test> |> $(COMPILER) $(LFLAGS) %f %<src> %<test> -o %o |> test
+: main.o | <src> |> $(COMPILER) $(LFLAGS) %f %<src> -o %o |> prob

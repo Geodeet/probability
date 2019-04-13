@@ -41,7 +41,6 @@ public:
   // Displaying the number
   std::string as_string(void) const;
   void print(void) const;
-  std::ostream& operator<<(std::ostream &os) const;
 
   // Assignment arithmetic
   Fraction &operator+=(const Fraction &other);
@@ -110,4 +109,6 @@ public:
   friend bool operator>(const Fraction &A, const int &Bi);
   friend bool operator<=(const Fraction &A, const int &Bi);
   friend bool operator>=(const Fraction &A, const int &Bi);
+
+  friend std::ostream& operator<<(std::ostream &os, const Fraction fraction);
 };

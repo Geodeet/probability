@@ -3,6 +3,8 @@
     for fractions.
 */
 
+#pragma once
+
 #include "fraction.src.hpp"
 
 // Some arithmetic for fractions

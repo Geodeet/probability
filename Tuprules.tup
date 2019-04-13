@@ -5,8 +5,8 @@ CFLAGS += -g
 
 #LFLAGS += -v
 
-#COMPILER = clang++
-COMPILER = g++
+COMPILER = clang++
+#COMPILER = g++
 !cpp = |> $(COMPILER) $(CFLAGS) -c %f -o %o |> %B.o
 !ar = |> ar crs $(LFLAGS) %o %f |>
 !ld = |> $(COMPILER) $(LFLAGS) %f -o %o |>
