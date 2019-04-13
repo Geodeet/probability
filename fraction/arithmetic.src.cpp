@@ -1,4 +1,4 @@
-#include "fraction_arith.hpp"
+#include "arithmetic.src.hpp"
 
 // Addition of two fractions
 Fraction operator+(const Fraction &A, const Fraction &B)

@@ -1,4 +1,4 @@
-#include "outcome.hpp"
+#include "outcome.src.hpp"
 
 // Default constructor
 Outcome::Outcome( void ) {

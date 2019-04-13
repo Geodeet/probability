@@ -1,8 +1,7 @@
 include_rules
 
 # The rule to compile cpp files to object files
-: foreach *.cpp |> !compile_files |>
+: foreach *.cpp |> !cpp |>
 
 # Linking the object files into an executable
-: test.o fraction/fraction_impl.o fraction/fraction_arith.o fraction/fraction_impl.test.o fraction/fraction_arith.test.o outcome/outcome.o outcome/outcome.test.o |> !link_objects |> test
-: main.o |> !link_objects |> prob
+: test.o | <fraction> <outcome> <util> |> $(COMPILER) $(LFLAGS) %f %<fraction> %<outcome> %<util> -o %o |> test

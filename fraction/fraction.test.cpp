@@ -1,6 +1,6 @@
 #include <catch.hpp>
 
-#include "fraction_impl.hpp"
+#include "fraction.hpp"
 
 TEST_CASE("fraction creation from void", "[fraction]")
 {

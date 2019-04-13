@@ -7,6 +7,6 @@ CFLAGS += -g
 
 #COMPILER = clang++
 COMPILER = g++
-!compile_files = |> $(COMPILER) $(CFLAGS) -c %f -o %o |> %B.o
-!make_lib = |> ar crs $(LFLAGS) %o %f |>
-!link_objects = |> $(COMPILER) $(LFLAGS) %f -o %o |>
+!cpp = |> $(COMPILER) $(CFLAGS) -c %f -o %o |> %B.o
+!ar = |> ar crs $(LFLAGS) %o %f |>
+!ld = |> $(COMPILER) $(LFLAGS) %f -o %o |>

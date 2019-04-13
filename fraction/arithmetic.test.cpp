@@ -1,6 +1,6 @@
 #include <catch.hpp>
 
-#include "fraction_arith.hpp"
+#include "arithmetic.src.hpp"
 
 TEST_CASE("fraction addition", "[fraction][arithmetic]")
 {

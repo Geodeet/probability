@@ -1,4 +1,4 @@
-#include "fraction_impl.hpp"
+#include "fraction.src.hpp"
 
 // Testing a new simplification method
 void Fraction::_simplify(void)

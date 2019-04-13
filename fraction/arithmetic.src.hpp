@@ -3,7 +3,7 @@
     for fractions.
 */
 
-#include "fraction_impl.hpp"
+#include "fraction.src.hpp"
 
 // Some arithmetic for fractions
 Fraction operator+(const Fraction &A, const Fraction &B);
