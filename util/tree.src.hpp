@@ -27,8 +27,12 @@ class Tree
                          Outcome>
     {
         Node *_cur;
+        bool _at_end;
+
+        void _advance(void);
 
       public:
+        iterator(void);
         iterator(Node *node);
 
         iterator& operator++(void);

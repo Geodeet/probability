@@ -5,6 +5,7 @@
 class Node
 {
     unsigned int _depth;
+    bool _is_leaf;
 
     void _rotate_left(void);
     void _rotate_right(void);
@@ -14,9 +15,12 @@ class Node
 
     Outcome outcome;
 
-    Node(Node *parent, Outcome outcome);
+    Node(Node *parent);
 
-    void insert(const Outcome new_outcome);
+    bool is_leaf(void) const;
+
+    // Inserting returns the new depth
+    unsigned int insert(const Outcome new_outcome);
 
     // For debugging purposes
     void print(std::string prefix = "") const;

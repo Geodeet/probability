@@ -2,20 +2,16 @@
 
 #include "tree.src.hpp"
 
-Tree::Tree(void) : _root(nullptr) {}
+Tree::Tree(void) : _root(new Node(nullptr)) {}
 
 void Tree::insert(Outcome outcome)
 {
-    if (_root)
-        _root->insert(outcome);
-    else
-        _root = new Node(nullptr, outcome);
+    _root->insert(outcome);
 }
 
 void Tree::print(void) const
 {
-    if (_root)
-        _root->print();
+    _root->print();
 }
 
 Tree::iterator Tree::begin(void)
@@ -29,38 +25,65 @@ Tree::iterator Tree::end(void)
 }
 
 // Iterator implementation
-Tree::iterator::iterator(Node *node) : _cur(nullptr)
+Node *follow_left(Node *node)
 {
-    while(node->left)
+    while (!node->left->is_leaf())
         node = node->left;
 
-    _cur = node;
+    return node;
+}
+
+Tree::iterator::iterator(void) : _cur(nullptr), _at_end(true) {}
+
+Tree::iterator::iterator(Node *node) : _cur(follow_left(node)), _at_end(false) {}
+
+void Tree::iterator::_advance()
+{
+    if (!_at_end)
+    {
+        if (!_cur->right->is_leaf())
+        {
+            _cur = _cur->right;
+            _cur = follow_left(_cur);
+        }
+        else
+        {
+            while (_cur->parent && _cur->parent->right == _cur)
+                _cur = _cur->parent;
+            _cur = _cur->parent;
+        }
+    }
+
+    if (!_cur)
+        _at_end = true;
 }
 
 Tree::iterator &Tree::iterator::operator++(void)
 {
-    if (_cur->right)
-        _cur = _cur->right;
-    else if ()
-    _cur = _cur->parent;
+    _advance();
+
     return *this;
 }
 
 Tree::iterator Tree::iterator::operator++(int)
 {
-    Tree::iterator iter(_cur);
+    Tree::iterator iter;
+    iter._at_end = false;
+    iter._cur = _cur;
+
+    _advance();
 
     return iter;
 }
 
 bool Tree::iterator::operator==(const iterator &other) const
 {
-    return _cur == other._cur;
+    return _cur == other._cur || (_at_end && other._at_end);
 }
 
 bool Tree::iterator::operator!=(const iterator &other) const
 {
-    return _cur != other._cur;
+    return _cur != other._cur && !(_at_end && other._at_end);
 }
 
 Tree::iterator::reference Tree::iterator::operator*(void)

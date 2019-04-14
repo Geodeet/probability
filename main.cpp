@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 {
   Tree t;
 
-  Outcome o1(1), o2(2), o3(3), o4(5), o5(8), o6(9);
+  Outcome o1(1), o2(2), o3(3), o4(4), o5(5), o6(6);
 
   t.insert(o5);
   t.insert(o2);
@@ -21,8 +21,23 @@ int main(int argc, char **argv)
 
   std::cout << "======" << std::endl;
 
-  for(auto o: t)
-    std::cout << o << std::endl;
+  auto iter = t.begin();
+
+  std::cout << *iter << std::endl;
+  iter++;
+  std::cout << *iter << std::endl;
+  iter++;
+  std::cout << *iter << std::endl;
+  iter++;
+  std::cout << *iter << std::endl;
+  iter++;
+  std::cout << *iter << std::endl;
+  iter++;
+  std::cout << *iter << std::endl;
+  iter++;
+
+  // for(auto o: t)
+  //   std::cout << o << std::endl;
 
   return 0;
 }
