@@ -68,8 +68,8 @@ Tree::iterator &Tree::iterator::operator++(void)
 Tree::iterator Tree::iterator::operator++(int)
 {
     Tree::iterator iter;
-    iter._at_end = false;
     iter._cur = _cur;
+    iter._at_end = _at_end;
 
     _advance();
 
@@ -91,7 +91,7 @@ Tree::iterator::reference Tree::iterator::operator*(void)
     return _cur->outcome;
 }
 
-Tree::iterator::reference Tree::iterator::operator->(void)
+Tree::iterator::pointer Tree::iterator::operator->(void)
 {
-    return _cur->outcome;
+    return &_cur->outcome;
 }

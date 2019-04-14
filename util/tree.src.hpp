@@ -22,9 +22,7 @@ class Tree
     class iterator : std::iterator<
                          std::bidirectional_iterator_tag,
                          Outcome,
-                         long int,
-                         Outcome *,
-                         Outcome>
+                         long int>
     {
         Node *_cur;
         bool _at_end;
@@ -42,7 +40,7 @@ class Tree
         bool operator!=(const iterator &other) const;
 
         reference operator*();
-        reference operator->();
+        pointer operator->();
     };
 
   public:

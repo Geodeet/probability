@@ -21,20 +21,16 @@ int main(int argc, char **argv)
 
   std::cout << "======" << std::endl;
 
+  int i = 1;
+
   auto iter = t.begin();
 
-  std::cout << *iter << std::endl;
-  iter++;
-  std::cout << *iter << std::endl;
-  iter++;
-  std::cout << *iter << std::endl;
-  iter++;
-  std::cout << *iter << std::endl;
-  iter++;
-  std::cout << *iter << std::endl;
-  iter++;
-  std::cout << *iter << std::endl;
-  iter++;
+  std::cout << (iter++)->value << std::endl;
+  std::cout << (iter++)->value << std::endl;
+  std::cout << (iter++)->value << std::endl;
+  std::cout << (iter++)->value << std::endl;
+  std::cout << (iter++)->value << std::endl;
+  std::cout << (iter++)->value << std::endl;
 
   // for(auto o: t)
   //   std::cout << o << std::endl;
