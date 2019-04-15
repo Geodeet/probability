@@ -14,6 +14,8 @@ class Tree
 
     void insert(const Outcome outcome);
 
+    Fraction probability(Fraction outcome) const;
+
     // For debugging purposes
     void print(void) const;
 

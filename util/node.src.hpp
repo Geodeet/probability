@@ -4,24 +4,31 @@
 
 class Node
 {
-    unsigned int _depth;
-    bool _is_leaf;
+  unsigned int _depth;
+  bool _is_leaf;
 
-    void _rotate_left(void);
-    void _rotate_right(void);
+  unsigned int _get_balance(void);
 
-  public:
-    Node *parent, *left, *right;
+  void _update_depth(void);
+  Node *_rebalance(Outcome outcome);
 
-    Outcome outcome;
+  Node *_rotate_left(void);
+  Node *_rotate_right(void);
 
-    Node(Node *parent);
+public:
+  Node *left, *right;
 
-    bool is_leaf(void) const;
+  Outcome outcome;
 
-    // Inserting returns the new depth
-    unsigned int insert(const Outcome new_outcome);
+  Node(void);
 
-    // For debugging purposes
-    void print(std::string prefix = "") const;
+  bool is_leaf(void) const;
+
+  // Inserting returns the new depth
+  Node *insert(const Outcome new_outcome);
+
+  Fraction find(Fraction search_outcome) const;
+
+  // For debugging purposes
+  void print(std::string prefix = "") const;
 };

@@ -49,3 +49,11 @@ TEST_CASE("tree iterator", "[tree]")
     REQUIRE(pre_iter == t.end());
     REQUIRE(post_iter == t.end());
 }
+
+TEST_CASE("tree insertion", "[tree]")
+{
+}
+
+TEST_CASE("tree probability lookup", "[tree]")
+{
+}

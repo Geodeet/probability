@@ -17,6 +17,21 @@ int main(int argc, char **argv)
   t.insert(o3);
   t.insert(o6);
 
+  t.insert(Outcome(7));
+  t.insert(Outcome(8));
+  // t.insert(Outcome(9));
+  // t.insert(Outcome(10));
+  // t.insert(Outcome(11));
+  // t.insert(Outcome(12));
+  // t.insert(Outcome(13));
+  // t.insert(Outcome(14));
+  // t.insert(Outcome(15));
+  // t.insert(Outcome(16));
+  // t.insert(Outcome(17));
+  // t.insert(Outcome(18));
+  // t.insert(Outcome(19));
+  // t.insert(Outcome(20));
+
   t.print();
 
   std::cout << "======" << std::endl;

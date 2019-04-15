@@ -2,11 +2,16 @@
 
 #include "tree.src.hpp"
 
-Tree::Tree(void) : _root(new Node(nullptr)) {}
+Tree::Tree(void) : _root(new Node()) {}
 
 void Tree::insert(Outcome outcome)
 {
-    _root->insert(outcome);
+    _root = _root->insert(outcome);
+}
+
+Fraction Tree::probability(Fraction outcome) const
+{
+    return _root->find(outcome);
 }
 
 void Tree::print(void) const
@@ -39,23 +44,23 @@ Tree::iterator::iterator(Node *node) : _cur(follow_left(node)), _at_end(false) {
 
 void Tree::iterator::_advance()
 {
-    if (!_at_end)
-    {
-        if (!_cur->right->is_leaf())
-        {
-            _cur = _cur->right;
-            _cur = follow_left(_cur);
-        }
-        else
-        {
-            while (_cur->parent && _cur->parent->right == _cur)
-                _cur = _cur->parent;
-            _cur = _cur->parent;
-        }
-    }
+    // if (!_at_end)
+    // {
+    //     if (!_cur->right->is_leaf())
+    //     {
+    //         _cur = _cur->right;
+    //         _cur = follow_left(_cur);
+    //     }
+    //     else
+    //     {
+    //         while (_cur->parent && _cur->parent->right == _cur)
+    //             _cur = _cur->parent;
+    //         _cur = _cur->parent;
+    //     }
+    // }
 
-    if (!_cur)
-        _at_end = true;
+    // if (!_cur)
+    //     _at_end = true;
 }
 
 Tree::iterator &Tree::iterator::operator++(void)
