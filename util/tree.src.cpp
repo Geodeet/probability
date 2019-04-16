@@ -30,37 +30,43 @@ Tree::iterator Tree::end(void)
 }
 
 // Iterator implementation
-Node *follow_left(Node *node)
-{
-    while (!node->left->is_leaf())
-        node = node->left;
+Tree::iterator::iterator(void) : _stack() {}
 
-    return node;
+Tree::iterator::iterator(Node *node) : _stack()
+{
+    if (node)
+    {
+        _stack.push(node);
+        _follow_left();
+    }
 }
 
-Tree::iterator::iterator(void) : _cur(nullptr), _at_end(true) {}
-
-Tree::iterator::iterator(Node *node) : _cur(follow_left(node)), _at_end(false) {}
+void Tree::iterator::_follow_left(void)
+{
+    if (!_stack.empty())
+        while (!_stack.top()->left->is_leaf())
+            _stack.push(_stack.top()->left);
+}
 
 void Tree::iterator::_advance()
 {
-    // if (!_at_end)
-    // {
-    //     if (!_cur->right->is_leaf())
-    //     {
-    //         _cur = _cur->right;
-    //         _cur = follow_left(_cur);
-    //     }
-    //     else
-    //     {
-    //         while (_cur->parent && _cur->parent->right == _cur)
-    //             _cur = _cur->parent;
-    //         _cur = _cur->parent;
-    //     }
-    // }
-
-    // if (!_cur)
-    //     _at_end = true;
+    if (!_stack.empty())
+    {
+        if (_stack.top()->right->is_leaf())
+        {
+            Node *prev;
+            do
+            {
+                prev = _stack.top();
+                _stack.pop();
+            } while (!_stack.empty() && _stack.top()->right == prev);
+        }
+        else
+        {
+            _stack.push(_stack.top()->right);
+            _follow_left();
+        }
+    }
 }
 
 Tree::iterator &Tree::iterator::operator++(void)
@@ -73,8 +79,7 @@ Tree::iterator &Tree::iterator::operator++(void)
 Tree::iterator Tree::iterator::operator++(int)
 {
     Tree::iterator iter;
-    iter._cur = _cur;
-    iter._at_end = _at_end;
+    iter._stack = _stack;
 
     _advance();
 
@@ -83,20 +88,32 @@ Tree::iterator Tree::iterator::operator++(int)
 
 bool Tree::iterator::operator==(const iterator &other) const
 {
-    return _cur == other._cur || (_at_end && other._at_end);
+    if (_stack.empty() ^ other._stack.empty())
+        return false;
+    else if (_stack.empty() && other._stack.empty())
+        return true;
+    else if (_stack.top() == other._stack.top())
+        return true;
+    else
+        return false;
 }
 
 bool Tree::iterator::operator!=(const iterator &other) const
 {
-    return _cur != other._cur && !(_at_end && other._at_end);
+    if (_stack.empty() && other._stack.empty())
+        return false;
+    else if (_stack.empty() || other._stack.empty())
+        return true;
+    else
+        return _stack.top() != other._stack.top();
 }
 
 Tree::iterator::reference Tree::iterator::operator*(void)
 {
-    return _cur->outcome;
+    return _stack.top()->outcome;
 }
 
 Tree::iterator::pointer Tree::iterator::operator->(void)
 {
-    return &_cur->outcome;
+    return &_stack.top()->outcome;
 }

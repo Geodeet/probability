@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stack>
+
 #include "../outcome/outcome.hpp"
 
 // Forward declaration of tree node
@@ -26,9 +28,10 @@ class Tree
                          Outcome,
                          long int>
     {
-        Node *_cur;
-        bool _at_end;
+        // Node *_cur;
+        std::stack<Node*> _stack;
 
+        void _follow_left(void);
         void _advance(void);
 
       public:

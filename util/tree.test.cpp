@@ -50,10 +50,18 @@ TEST_CASE("tree iterator", "[tree]")
     REQUIRE(post_iter == t.end());
 }
 
-TEST_CASE("tree insertion", "[tree]")
-{
-}
-
 TEST_CASE("tree probability lookup", "[tree]")
 {
+    Tree t;
+    Outcome o1(1), o2(2), o3(1), o4(2), o5(3);
+
+    t.insert(o1);
+    t.insert(o2);
+    t.insert(o3);
+    t.insert(o4);
+    t.insert(o5);
+
+    REQUIRE(t.probability(1) == 2);
+    REQUIRE(t.probability(2) == 2);
+    REQUIRE(t.probability(3) == 1);
 }

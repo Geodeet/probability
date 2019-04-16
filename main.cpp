@@ -19,36 +19,38 @@ int main(int argc, char **argv)
 
   t.insert(Outcome(7));
   t.insert(Outcome(8));
-  // t.insert(Outcome(9));
-  // t.insert(Outcome(10));
-  // t.insert(Outcome(11));
-  // t.insert(Outcome(12));
-  // t.insert(Outcome(13));
-  // t.insert(Outcome(14));
-  // t.insert(Outcome(15));
-  // t.insert(Outcome(16));
-  // t.insert(Outcome(17));
-  // t.insert(Outcome(18));
-  // t.insert(Outcome(19));
-  // t.insert(Outcome(20));
+  t.insert(Outcome(9));
+  t.insert(Outcome(10));
+  t.insert(Outcome(11));
+  t.insert(Outcome(12));
+  t.insert(Outcome(13));
+  t.insert(Outcome(14));
+  t.insert(Outcome(15));
+  t.insert(Outcome(16));
+  t.insert(Outcome(17));
+  t.insert(Outcome(18));
+  t.insert(Outcome(19));
+  t.insert(Outcome(20));
 
   t.print();
 
   std::cout << "======" << std::endl;
 
-  int i = 1;
+  // auto iter = t.begin();
 
-  auto iter = t.begin();
+  // std::cout << (iter++)->value << std::endl;
+  // std::cout << (iter++)->value << std::endl;
+  // std::cout << (iter++)->value << std::endl;
+  // std::cout << (iter++)->value << std::endl;
+  // std::cout << (iter++)->value << std::endl;
+  // std::cout << (iter++)->value << std::endl;
+  // std::cout << (iter++)->value << std::endl;
+  // std::cout << (iter++)->value << std::endl;
+  // std::cout << (iter++)->value << std::endl;
+  // std::cout << (iter++)->value << std::endl;
 
-  std::cout << (iter++)->value << std::endl;
-  std::cout << (iter++)->value << std::endl;
-  std::cout << (iter++)->value << std::endl;
-  std::cout << (iter++)->value << std::endl;
-  std::cout << (iter++)->value << std::endl;
-  std::cout << (iter++)->value << std::endl;
-
-  // for(auto o: t)
-  //   std::cout << o << std::endl;
+  for(auto o: t)
+    std::cout << o << std::endl;
 
   return 0;
 }
