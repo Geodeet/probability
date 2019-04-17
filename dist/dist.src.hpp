@@ -5,16 +5,17 @@
 
 class Dist
 {
-    Tree _outcomes;
+  Tree _outcomes;
 
-    Fraction _normalize(void);
+  void _normalize(void);
 
-  public:
-    Dist(void);
+public:
+  Dist &operator=(const Dist &other);
 
-    Dist& operator=(const Dist &other);
-
-    Dist& operator+=(const Dist &other);
-    Dist& operator-=(const Dist &other);
-    // ...
+  Dist &operator+=(const Dist &other);
+  Dist &operator-=(const Dist &other);
+  Dist &operator*=(const Dist &other);
+  Dist &operator/=(const Dist &other);
+  Dist &operator%=(const Dist &other);
+  // ...
 };

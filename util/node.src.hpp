@@ -21,6 +21,9 @@ public:
   Outcome outcome;
 
   Node(void);
+  ~Node(void);
+
+  Node *copy(void) const;
 
   bool is_leaf(void) const;
 

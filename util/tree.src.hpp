@@ -11,8 +11,14 @@ class Tree
 {
     Node *_root;
 
+    Tree(Node *root);
+
   public:
     Tree(void);
+    Tree(const Tree &other);
+    ~Tree(void);
+
+    Tree copy(void) const;
 
     void insert(const Outcome outcome);
 

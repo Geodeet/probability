@@ -4,6 +4,24 @@
 
 Tree::Tree(void) : _root(new Node()) {}
 
+Tree::Tree(Node *root) : _root(root) {}
+
+Tree::Tree(const Tree &other)
+{
+    delete _root;
+    _root = other.copy()._root;
+}
+
+Tree::~Tree(void)
+{
+    delete _root;
+}
+
+Tree Tree::copy(void) const
+{
+    return Tree(_root->copy());
+}
+
 void Tree::insert(Outcome outcome)
 {
     _root = _root->insert(outcome);

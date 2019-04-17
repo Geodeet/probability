@@ -10,6 +10,12 @@ unsigned int max(unsigned int lhs, unsigned int rhs)
 
 Node::Node(void) : _depth(0), _is_leaf(true), left(nullptr), right(nullptr) {}
 
+Node::~Node(void)
+{
+    delete left;
+    delete right;
+}
+
 unsigned int Node::_get_balance(void)
 {
     return left->_depth - right->_depth;
@@ -73,6 +79,21 @@ Node *Node::_rotate_right(void)
     b->_update_depth();
 
     return a;
+}
+
+Node *Node::copy(void) const
+{
+    Node *copy = new Node();
+
+    if (left)
+        copy->left = left->copy();
+    if (right)
+        copy->right = right->copy();
+    copy->_is_leaf = _is_leaf;
+    copy->_depth = _depth;
+    copy->outcome = outcome;
+
+    return copy;
 }
 
 bool Node::is_leaf(void) const
