@@ -19,6 +19,7 @@ Tree::~Tree(void)
 
 Tree &Tree::operator=(const Tree &other)
 {
+    // TODO use move semantics or avoid copying tree
     delete _root;
     _root = other._root->copy();
 
@@ -27,7 +28,8 @@ Tree &Tree::operator=(const Tree &other)
 
 void Tree::insert(Outcome outcome)
 {
-    _root = _root->insert(outcome);
+    if (outcome.probability != 0)
+        _root = _root->insert(outcome);
 }
 
 Fraction Tree::probability(Fraction outcome) const
@@ -122,7 +124,7 @@ bool Tree::StackIterator::operator!=(const StackIterator &other)
 
 Tree::iterator::iterator(void) : StackIterator(nullptr) {}
 
-Tree::const_iterator::const_iterator(void): StackIterator(nullptr) {}
+Tree::const_iterator::const_iterator(void) : StackIterator(nullptr) {}
 
 Tree::iterator::iterator(Node *node) : StackIterator(node) {}
 
@@ -187,7 +189,7 @@ Tree::iterator::reference Tree::iterator::operator*(void)
     return _stack.top()->outcome;
 }
 
-Tree::const_iterator::reference Tree::const_iterator::operator*(void) const
+Tree::const_iterator::reference Tree::const_iterator::operator*(void)const
 {
     return _stack.top()->outcome;
 }
@@ -197,7 +199,7 @@ Tree::iterator::pointer Tree::iterator::operator->(void)
     return &_stack.top()->outcome;
 }
 
-Tree::const_iterator::pointer Tree::const_iterator::operator->(void) const
+Tree::const_iterator::pointer Tree::const_iterator::operator->(void)const
 {
     return &_stack.top()->outcome;
 }

@@ -64,6 +64,7 @@ TEST_CASE("tree probability lookup", "[tree]")
     REQUIRE(t.probability(1) == 2);
     REQUIRE(t.probability(2) == 2);
     REQUIRE(t.probability(3) == 1);
+    REQUIRE(t.probability(4) == 0);
 }
 
 TEST_CASE("tree copying", "[tree]")

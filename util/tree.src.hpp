@@ -47,7 +47,7 @@ private:
 
 public:
   class iterator : public std::iterator<
-                       std::bidirectional_iterator_tag,
+                       std::forward_iterator_tag,
                        Outcome,
                        long int>, StackIterator
   {
@@ -66,7 +66,7 @@ public:
   };
 
   class const_iterator : public std::iterator<
-                             std::bidirectional_iterator_tag,
+                             std::forward_iterator_tag,
                              Outcome,
                              long int,
                              const Outcome *,
