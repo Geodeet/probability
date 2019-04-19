@@ -142,11 +142,10 @@ Fraction Node::find(Fraction search_outcome) const
 void Node::print(std::string prefix) const
 {
     if (_is_leaf)
-        std::cout << prefix << "leaf"
-                  << " | " << _depth << std::endl;
+        std::cout << prefix << "leaf" << " | " << _depth << " | " << this << std::endl;
     else
     {
-        std::cout << prefix << outcome << " | " << _depth << std::endl;
+        std::cout << prefix << outcome << " | " << _depth << " | " << this << std::endl;
         left->print(prefix + "  ");
         right->print(prefix + "  ");
     }

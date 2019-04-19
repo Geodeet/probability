@@ -68,7 +68,7 @@ TEST_CASE("tree probability lookup", "[tree]")
 
 TEST_CASE("tree copying", "[tree]")
 {
-    Tree t, shallow, deep;
+    Tree t, deep;
     Outcome o1(1), o2(2), o3(3), o4(4);
 
     t.insert(o1);
@@ -76,19 +76,19 @@ TEST_CASE("tree copying", "[tree]")
     t.insert(o3);
     t.insert(o4);
 
-    shallow = t;
-    deep = t.copy();
+    deep = t;
     Tree constr = t;
 
     auto t_iter = t.begin();
-    auto shallow_iter = shallow.begin();
     auto deep_iter = deep.begin();
     auto constr_iter = constr.begin();
 
-    while (t_iter++ != t.end())
+    while (t_iter != t.end())
     {
-        REQUIRE(*t_iter == *shallow_iter);
         REQUIRE(*t_iter == *deep_iter);
         REQUIRE(*t_iter == *constr_iter);
+        t_iter++;
+        deep_iter++;
+        constr_iter++;
     }
 }

@@ -11,6 +11,7 @@ class Dist
 
 public:
   Dist &operator=(const Dist &other);
+  Dist &operator=(Dist &&other);
 
   Dist &operator+=(const Dist &other);
   Dist &operator-=(const Dist &other);
