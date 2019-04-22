@@ -80,9 +80,62 @@ TEST_CASE("dist moments", "[dist][stats]")
     dist.insert(Outcome(6, Fraction(1, 6)));
 
     REQUIRE(moment(0, dist) == 1);
-    REQUIRE(moment(1, dist) == Fraction(7,2));
+    REQUIRE(moment(1, dist) == Fraction(7, 2));
     REQUIRE(moment(2, dist) == Fraction(91, 6));
-    REQUIRE(moment(3, dist) == Fraction(147,2));
+    REQUIRE(moment(3, dist) == Fraction(147, 2));
     REQUIRE(moment(4, dist) == Fraction(2275, 6));
 }
 
+TEST_CASE("dist mode", "[dist][stats]")
+{
+    Dist dist;
+
+    dist.insert(Outcome(1, Fraction(1, 6)));
+    dist.insert(Outcome(2, Fraction(1, 6)));
+    dist.insert(Outcome(3, Fraction(1, 2)));
+    dist.insert(Outcome(4, Fraction(1, 6)));
+
+    REQUIRE(mode(dist) == 3);
+}
+
+TEST_CASE("dist median", "[dist][stats]")
+{
+    Dist dist;
+
+    dist.insert(Outcome(1, Fraction(1, 6)));
+    dist.insert(Outcome(2, Fraction(1, 6)));
+    dist.insert(Outcome(3, Fraction(1, 2)));
+    dist.insert(Outcome(4, Fraction(1, 6)));
+
+    REQUIRE(median(dist) == 3);
+}
+
+TEST_CASE("dist median dice", "[dist][stats]")
+{
+    Dist dist;
+
+    dist.insert(Outcome(1, Fraction(1, 6)));
+    dist.insert(Outcome(2, Fraction(1, 6)));
+    dist.insert(Outcome(3, Fraction(1, 6)));
+    dist.insert(Outcome(4, Fraction(1, 6)));
+    dist.insert(Outcome(5, Fraction(1, 6)));
+    dist.insert(Outcome(6, Fraction(1, 6)));
+
+    REQUIRE(median(dist) == 4);
+}
+
+TEST_CASE("dist percentile", "[dist][stats]")
+{
+    Dist dist;
+
+    dist.insert(Outcome(1, Fraction(1, 6)));
+    dist.insert(Outcome(2, Fraction(1, 6)));
+    dist.insert(Outcome(3, Fraction(1, 6)));
+    dist.insert(Outcome(4, Fraction(1, 6)));
+    dist.insert(Outcome(5, Fraction(1, 6)));
+    dist.insert(Outcome(6, Fraction(1, 6)));
+
+    REQUIRE(percentile(0, dist) == 1);
+    REQUIRE(percentile(49, dist) == 3);
+    REQUIRE(percentile(100,dist) == 6);
+}
