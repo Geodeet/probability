@@ -2,31 +2,20 @@
 
 Fraction mean(const Dist &dist)
 {
-    Fraction result(0);
-
-    for (auto o : dist)
-        result += o.value * o.probability;
-
-    return result;
+    return moment(1, dist);
 }
 
 Fraction variance(const Dist &dist)
 {
-    Fraction result(0);
-
-    for (auto o : dist)
-        result += o.value * o.value * o.probability;
-
-    Fraction meansq = mean(dist);
-    meansq *= meansq;
-
-    return result - meansq;
+    return moment(2, dist) - pow(mean(dist), 2);
 }
 
 Fraction moment(const int n, const Dist &dist)
 {
     Fraction result(0);
 
-    for (auto o: dist)
-        result += pow()
+    for (auto o : dist)
+        result += pow(o.value, n) * o.probability;
+
+    return result;
 }
