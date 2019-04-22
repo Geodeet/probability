@@ -13,14 +13,18 @@ Fraction variance(const Dist &dist)
     return moment(2, centralized);
 }
 
-Fraction skewness(const Dist &dist)
-{
+// Fraction skewness_squared(const Dist &dist)
+// {
+//     Dist centralized = (dist - mean(dist));
 
-}
+//     return pow(moment(3, centralized), 2) / pow(variance(dist), 3);
+// }
 
 Fraction kurtosis(const Dist &dist)
 {
+    Dist centralized = dist - mean(dist);
 
+    return moment(4, centralized) / pow(variance(dist), 2);
 }
 
 Fraction moment(const int n, const Dist &dist)
