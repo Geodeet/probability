@@ -61,53 +61,6 @@ TEST_CASE("fraction displaying", "[fraction]")
     REQUIRE(f3.as_string() == "5 / 6");
 }
 
-TEST_CASE("fraction absolute value", "[fraction]")
-{
-    Fraction f1(2, 5), f2(-4, 7), f3(-5, -8), f4(7, -9);
-
-    REQUIRE(f1.abs().get_numerator() == 2);
-    REQUIRE(f1.abs().get_denomenator() == 5);
-    REQUIRE(f2.abs().get_numerator() == 4);
-    REQUIRE(f2.abs().get_denomenator() == 7);
-    REQUIRE(f3.abs().get_numerator() == 5);
-    REQUIRE(f3.abs().get_denomenator() == 8);
-    REQUIRE(f4.abs().get_numerator() == 7);
-    REQUIRE(f4.abs().get_denomenator() == 9);
-}
-
-TEST_CASE("fraction rounding", "[fraction]")
-{
-    Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
-
-    REQUIRE(f1.round() == 4);
-    REQUIRE(f2.round() == 1);
-    REQUIRE(f3.round() == 1);
-    REQUIRE(f4.round() == 2);
-    REQUIRE(f5.round() == 2);
-}
-
-TEST_CASE("fraction flooring", "[fraction]")
-{
-    Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
-
-    REQUIRE(f1.floor() == 4);
-    REQUIRE(f2.floor() == 0);
-    REQUIRE(f3.floor() == 1);
-    REQUIRE(f4.floor() == 1);
-    REQUIRE(f5.floor() == 2);
-}
-
-TEST_CASE("fraction ceiling", "[fraction]")
-{
-    Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
-
-    REQUIRE(f1.ceil() == 4);
-    REQUIRE(f2.ceil() == 1);
-    REQUIRE(f3.ceil() == 2);
-    REQUIRE(f4.ceil() == 2);
-    REQUIRE(f5.ceil() == 3);
-}
-
 TEST_CASE("fraction as double", "[fraction]")
 {
     Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
@@ -117,18 +70,6 @@ TEST_CASE("fraction as double", "[fraction]")
     REQUIRE(f3.as_double() == 1.2);
     REQUIRE(f4.as_double() == 1.6);
     REQUIRE(f5.as_double() == 2.2);
-}
-
-TEST_CASE("fraction powers", "[fraction]")
-{
-    Fraction f1(2), f2(1, 2), f3(6, 5);
-
-    REQUIRE(f1.pow(4).get_numerator() == 16);
-    REQUIRE(f1.pow(4).get_denomenator() == 1);
-    REQUIRE(f2.pow(4).get_numerator() == 1);
-    REQUIRE(f2.pow(4).get_denomenator() == 16);
-    REQUIRE(f3.pow(4).get_numerator() == 1296);
-    REQUIRE(f3.pow(4).get_denomenator() == 625);
 }
 
 TEST_CASE("fraction assignment addition", "[fraction]")

@@ -258,49 +258,6 @@ Fraction Fraction::operator--(int)
   return copy;
 }
 
-// Get the absolute value of the fractions
-Fraction Fraction::abs(void) const
-{
-  // Create a copy with the absolute value of the numerator
-  Fraction new_frac(std::abs(_numer), _denom);
-
-  return new_frac;
-}
-
-// Round the fraction to the nearest integer
-long long int Fraction::round(void) const
-{
-  long long int base = _numer / _denom;
-
-  if (_numer % _denom > _denom / 2)
-  {
-    return base + 1;
-  }
-  else
-  {
-    return base;
-  }
-}
-
-// Lower the fraction to the nearest smaller integer
-long long int Fraction::floor(void) const
-{
-  return _numer / _denom;
-}
-
-// Raise the fraction to the nearest larger integer
-long long int Fraction::ceil(void) const
-{
-  if (_numer % _denom == 0)
-  {
-    return _numer / _denom;
-  }
-  else
-  {
-    return _numer / _denom + 1;
-  }
-}
-
 // Return the fraction as a double
 double Fraction::as_double(void) const
 {
@@ -317,29 +274,6 @@ long long int Fraction::get_numerator(void) const
 long long int Fraction::get_denomenator(void) const
 {
   return _denom;
-}
-
-// Recursive power computation
-Fraction power_iteration(const Fraction &base, int exponent)
-{
-  if (exponent == 0)
-  {
-    return Fraction(1);
-  }
-  else if (exponent > 0)
-  {
-    return base * power_iteration(base, --exponent);
-  }
-  else
-  {
-    return base * power_iteration(base, ++exponent);
-  }
-}
-
-// Compute the power with an integer exponent
-Fraction Fraction::pow(int exponent) const
-{
-  return power_iteration(Fraction(_numer, _denom), exponent);
 }
 
 // Give fraction as string

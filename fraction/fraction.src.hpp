@@ -28,15 +28,9 @@ public:
   Fraction(const Fraction &frac);
   Fraction(const int numer, const int denom);
 
-  // Some simple mathematical expressions with fractions
-  Fraction abs(void) const;
-  long long int round(void) const;
-  long long int floor(void) const;
-  long long int ceil(void) const;
   double as_double(void) const;
   long long int get_numerator(void) const;
   long long int get_denomenator(void) const;
-  Fraction pow(int exponent) const;
 
   // Displaying the number
   std::string as_string(void) const;
@@ -88,6 +82,12 @@ public:
   friend Fraction operator/(const int &current, const Fraction &other);
   friend Fraction operator%(const int &current, const Fraction &other);
 
+  friend Fraction abs(const Fraction &frac);
+  friend long long int round(const Fraction &frac);
+  friend long long int floor(const Fraction &frac);
+  friend long long int ceil(const Fraction &frac);
+  friend Fraction pow(const Fraction &frac, int exponent);
+
   // The comparison functions are befriended here
   friend bool operator==(const Fraction &A, const Fraction &B);
   friend bool operator!=(const Fraction &A, const Fraction &B);
@@ -110,5 +110,5 @@ public:
   friend bool operator<=(const Fraction &A, const int &Bi);
   friend bool operator>=(const Fraction &A, const int &Bi);
 
-  friend std::ostream& operator<<(std::ostream &os, const Fraction fraction);
+  friend std::ostream &operator<<(std::ostream &os, const Fraction fraction);
 };

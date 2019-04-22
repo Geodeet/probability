@@ -147,6 +147,65 @@ TEST_CASE("fraction integer modulo", "[fraction][arithmetic]")
     REQUIRE(res2.get_denomenator() == 1);
 }
 
+TEST_CASE("fraction absolute value", "[fraction]")
+{
+    Fraction f1(2, 5), f2(-4, 7), f3(-5, -8), f4(7, -9);
+
+    REQUIRE(abs(f1).get_numerator() == 2);
+    REQUIRE(abs(f1).get_denomenator() == 5);
+    REQUIRE(abs(f2).get_numerator() == 4);
+    REQUIRE(abs(f2).get_denomenator() == 7);
+    REQUIRE(abs(f3).get_numerator() == 5);
+    REQUIRE(abs(f3).get_denomenator() == 8);
+    REQUIRE(abs(f4).get_numerator() == 7);
+    REQUIRE(abs(f4).get_denomenator() == 9);
+}
+
+TEST_CASE("fraction rounding", "[fraction]")
+{
+    Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
+
+    REQUIRE(round(f1) == 4);
+    REQUIRE(round(f2) == 1);
+    REQUIRE(round(f3) == 1);
+    REQUIRE(round(f4) == 2);
+    REQUIRE(round(f5) == 2);
+}
+
+TEST_CASE("fraction flooring", "[fraction]")
+{
+    Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
+
+    REQUIRE(floor(f1) == 4);
+    REQUIRE(floor(f2) == 0);
+    REQUIRE(floor(f3) == 1);
+    REQUIRE(floor(f4) == 1);
+    REQUIRE(floor(f5) == 2);
+}
+
+TEST_CASE("fraction ceiling", "[fraction]")
+{
+    Fraction f1(4), f2(4, 5), f3(6, 5), f4(8, 5), f5(11, 5);
+
+    REQUIRE(ceil(f1) == 4);
+    REQUIRE(ceil(f2) == 1);
+    REQUIRE(ceil(f3) == 2);
+    REQUIRE(ceil(f4) == 2);
+    REQUIRE(ceil(f5) == 3);
+}
+
+TEST_CASE("fraction powers", "[fraction]")
+{
+    Fraction f1(2), f2(1, 2), f3(6, 5);
+
+    REQUIRE(pow(f1, 4).get_numerator() == 16);
+    REQUIRE(pow(f1, 4).get_denomenator() == 1);
+    REQUIRE(pow(f2, 4).get_numerator() == 1);
+    REQUIRE(pow(f2, 4).get_denomenator() == 16);
+    REQUIRE(pow(f3, 4).get_numerator() == 1296);
+    REQUIRE(pow(f3, 4).get_denomenator() == 625);
+}
+
 TEST_CASE("fraction equality", "[fraction][arithmetic]")
 {
     Fraction f1(1, 3), f2(-1, 3), f3(-1, 3), f4(-2, 5), f5(1, 5);

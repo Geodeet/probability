@@ -26,6 +26,12 @@ Fraction operator*(const int &Ai, const Fraction &B);
 Fraction operator/(const int &Ai, const Fraction &B);
 Fraction operator%(const int &Ai, const Fraction &B);
 
+Fraction abs(const Fraction &frac);
+long long int round(const Fraction &frac);
+long long int floor(const Fraction &frac);
+long long int ceil(const Fraction &frac);
+Fraction pow(const Fraction &frac, int exponent);
+
 // Comparison operators
 bool operator==(const Fraction &A, const Fraction &B);
 bool operator!=(const Fraction &A, const Fraction &B);

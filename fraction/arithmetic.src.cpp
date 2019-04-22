@@ -156,6 +156,72 @@ Fraction operator%(const int &Ai, const Fraction &B)
     return (Fraction(Ai) % B);
 }
 
+// Get the absolute value of the fractions
+Fraction abs(const Fraction &frac)
+{
+  // Create a copy with the absolute value of the numerator
+  Fraction new_frac(std::abs(frac._numer), frac._denom);
+
+  return new_frac;
+}
+
+// Round the fraction to the nearest integer
+long long int round(const Fraction &frac)
+{
+  long long int base = frac._numer / frac._denom;
+
+  if (frac._numer % frac._denom > frac._denom / 2)
+  {
+    return base + 1;
+  }
+  else
+  {
+    return base;
+  }
+}
+
+// Lower the fraction to the nearest smaller integer
+long long int floor(const Fraction &frac)
+{
+  return frac._numer / frac._denom;
+}
+
+// Raise the fraction to the nearest larger integer
+long long int ceil(const Fraction &frac)
+{
+  if (frac._numer % frac._denom == 0)
+  {
+    return frac._numer / frac._denom;
+  }
+  else
+  {
+    return frac._numer / frac._denom + 1;
+  }
+}
+
+// Recursive power computation
+Fraction power_iteration(const Fraction &base, int exponent)
+{
+  if (exponent == 0)
+  {
+    return Fraction(1);
+  }
+  else if (exponent > 0)
+  {
+    return base * power_iteration(base, --exponent);
+  }
+  else
+  {
+    return base * power_iteration(base, ++exponent);
+  }
+}
+
+// Compute the power with an integer exponent
+Fraction pow(const Fraction &frac, int exponent)
+{
+  return power_iteration(Fraction(frac._numer, frac._denom), exponent);
+}
+
 // ===================== COMPARISON FUNCTIONS ===================================================
 // NOTE: we define operator== and operator< explicitly and base all other operators on these
 
