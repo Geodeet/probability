@@ -90,13 +90,6 @@ Fraction &Fraction::operator+=(const Fraction &other)
   return *this;
 }
 
-// Addition assignment for integers
-Fraction &Fraction::operator+=(const int &other)
-{
-  // We use the addition assignment for fractions
-  return operator+=(Fraction(other));
-}
-
 // Subtraction assignment
 Fraction &Fraction::operator-=(const Fraction &other)
 {
@@ -109,13 +102,6 @@ Fraction &Fraction::operator-=(const Fraction &other)
   _simplify();
 
   return *this;
-}
-
-// Subtraction assignment for integers
-Fraction &Fraction::operator-=(const int &other)
-{
-  // We use the subtraction assignment for fractions
-  return operator-=(Fraction(other));
 }
 
 // Multiplication assignment
@@ -132,13 +118,6 @@ Fraction &Fraction::operator*=(const Fraction &other)
   return *this;
 }
 
-// Multiplication assignment for integers
-Fraction &Fraction::operator*=(const int &other)
-{
-  // We use the multiplication assignment for fractions
-  return operator*=(Fraction(other));
-}
-
 // Division assignment
 Fraction &Fraction::operator/=(const Fraction &other)
 {
@@ -153,13 +132,6 @@ Fraction &Fraction::operator/=(const Fraction &other)
   return *this;
 }
 
-// Division assignment for integers
-Fraction &Fraction::operator/=(const int &other)
-{
-  // We use the division assignment for fractions
-  return operator/=(Fraction(other));
-}
-
 // Modulo assignment
 Fraction &Fraction::operator%=(const Fraction &other)
 {
@@ -167,13 +139,6 @@ Fraction &Fraction::operator%=(const Fraction &other)
   *this = *this % other;
 
   return *this;
-}
-
-// Modulo assignment for integers
-Fraction &Fraction::operator%=(const int &other)
-{
-  // We use the modulo assignment for fractions
-  return operator%=(Fraction(other));
 }
 
 // Negation operator

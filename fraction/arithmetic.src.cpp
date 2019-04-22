@@ -8,40 +8,12 @@ Fraction operator+(const Fraction &A, const Fraction &B)
     return Fraction(A._numer * B._denom + B._numer * A._denom, A._denom * B._denom);
 }
 
-// Addition of a fraction and an integer
-Fraction operator+(const Fraction &A, const int &Bi)
-{
-    // We use the addition of two fractions
-    return (A + Fraction(Bi));
-}
-
-// Addition of an integer and a fraction
-Fraction operator+(const int &Ai, const Fraction &B)
-{
-    // We use the addition of two fractions
-    return (Fraction(Ai) + B);
-}
-
 // Subtraction of two fractions
 Fraction operator-(const Fraction &A, const Fraction &B)
 {
     // New fraction is obtained through
     // a/b - c/d = (ad - bc) / bd
     return Fraction(A._numer * B._denom - B._numer * A._denom, A._denom * B._denom);
-}
-
-// Subtraction of a fraction and an integer
-Fraction operator-(const Fraction &A, const int &Bi)
-{
-    // We use the subtraction of two fractions
-    return (A - Fraction(Bi));
-}
-
-// Subtraction of an integer and a fraction
-Fraction operator-(const int &Ai, const Fraction &B)
-{
-    // We use the subtraction of two fractions
-    return (Fraction(Ai) - B);
 }
 
 // Multiplication of two fractions
@@ -52,40 +24,12 @@ Fraction operator*(const Fraction &A, const Fraction &B)
     return Fraction(A._numer * B._numer, A._denom * B._denom);
 }
 
-// Multiplication of a fraction and an integer
-Fraction operator*(const Fraction &A, const int &Bi)
-{
-    // We use the multiplication of two fractions
-    return (A * Fraction(Bi));
-}
-
-// Multiplication of an integer and a fraction
-Fraction operator*(const int &Ai, const Fraction &B)
-{
-    // We use the multiplication of two fractions
-    return (Fraction(Ai) * B);
-}
-
 // Division of two fractions
 Fraction operator/(const Fraction &A, const Fraction &B)
 {
     // New fraction is obtained through
     // a/b / c/d = (ad) / (bc)
     return Fraction(A._numer * B._denom, B._numer * A._denom);
-}
-
-// Division of a fraction and an integer
-Fraction operator/(const Fraction &A, const int &Bi)
-{
-    // We use the division of two fractions
-    return (A / Fraction(Bi));
-}
-
-// Division of an integer and a fraction
-Fraction operator/(const int &Ai, const Fraction &B)
-{
-    // We use the division of two fractions
-    return (Fraction(Ai) / B);
 }
 
 // Function that returns the increment needed in the modulo operator
@@ -140,20 +84,6 @@ Fraction operator%(const Fraction &A, const Fraction &B)
     new_frac._simplify();
 
     return new_frac;
-}
-
-// Modulo of a fraction and an integer
-Fraction operator%(const Fraction &A, const int &Bi)
-{
-    // We use the modulo operator for two fractions
-    return (A % Fraction(Bi));
-}
-
-// Modulo of an integer and a fraction
-Fraction operator%(const int &Ai, const Fraction &B)
-{
-    // We use the modulo operator for two fractions
-    return (Fraction(Ai) % B);
 }
 
 // Get the absolute value of the fractions
@@ -220,39 +150,11 @@ bool operator==(const Fraction &A, const Fraction &B)
     return false;
 }
 
-// Comparison operator for fractions and integers
-bool operator==(const Fraction &A, const int &Bi)
-{
-    // We use the comparison operator for fractions
-    return (A == Fraction(Bi));
-}
-
-// Comparison operator for integers and fractions
-bool operator==(const int &Ai, const Fraction &B)
-{
-    // We use the comparison operator for fractions
-    return (Fraction(Ai) == B);
-}
-
 // Unequal comparison operator
 bool operator!=(const Fraction &A, const Fraction &B)
 {
     // We reuse the comparison operator
     return !(A == B);
-}
-
-// Unequal comparison operator for fractions and integers
-bool operator!=(const Fraction &A, const int &Bi)
-{
-    // We use the unequal comparison operator for fractions
-    return (A != Fraction(Bi));
-}
-
-// Unequal comparison operator for integers and fractions
-bool operator!=(const int &Ai, const Fraction &B)
-{
-    // We use the unequal comparison operator for fractions
-    return (Fraction(Ai) != B);
 }
 
 // Less than operator
@@ -264,39 +166,11 @@ bool operator<(const Fraction &A, const Fraction &B)
     return (numA < numB) ? true : false;
 }
 
-// Less than operator for fractions and integers
-bool operator<(const Fraction &A, const int &Bi)
-{
-    // We use the less than operator for fractions
-    return (A < Fraction(Bi));
-}
-
-// Less than operator for integers and fractions
-bool operator<(const int &Ai, const Fraction &B)
-{
-    // We use the less than operator for fractions
-    return (Fraction(Ai) < B);
-}
-
 // Greater than operator
 bool operator>(const Fraction &A, const Fraction &B)
 {
     // We base it on the less than and unequal operators
     return (!(A < B) and (A != B));
-}
-
-// Greater than operator for fractions and integers
-bool operator>(const Fraction &A, const int &Bi)
-{
-    // We use the greater than operator for fractions
-    return (A > Fraction(Bi));
-}
-
-// Greater than operator for integers and fractions
-bool operator>(const int &Ai, const Fraction &B)
-{
-    // We use the greater than operator for fractions
-    return (Fraction(Ai) > B);
 }
 
 // Less equal operator
@@ -306,37 +180,9 @@ bool operator<=(const Fraction &A, const Fraction &B)
     return !(A > B);
 }
 
-// Less equal operator for fractions and integers
-bool operator<=(const Fraction &A, const int &Bi)
-{
-    // We use the less equal operator for fractions
-    return (A <= Fraction(Bi));
-}
-
-// Less equal operator for integers and fractions
-bool operator<=(const int &Ai, const Fraction &B)
-{
-    // We use the less equal operator for fractions
-    return (Fraction(Ai) <= B);
-}
-
 // Greater equal operator
 bool operator>=(const Fraction &A, const Fraction &B)
 {
     // We base it on the less than operator
     return !(A < B);
-}
-
-// Greater equal operator for fractions and integers
-bool operator>=(const Fraction &A, const int &Bi)
-{
-    // We use the greater equal for fractions
-    return (A >= Fraction(Bi));
-}
-
-// Greater equal operator for integers and fractions
-bool operator>=(const int &Ai, const Fraction &B)
-{
-    // We use the greater equal for fractions
-    return (Fraction(Ai) >= B);
 }

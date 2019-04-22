@@ -1,5 +1,10 @@
 #include "dist.src.hpp"
 
+Dist::Dist(const Fraction &frac)
+{
+    insert(Outcome(frac, 1));
+}
+
 void Dist::_normalize(void)
 {
     Fraction norm(0);

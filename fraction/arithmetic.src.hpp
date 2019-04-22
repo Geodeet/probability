@@ -14,18 +14,6 @@ Fraction operator*(const Fraction &A, const Fraction &B);
 Fraction operator/(const Fraction &A, const Fraction &B);
 Fraction operator%(const Fraction &A, const Fraction &B);
 
-Fraction operator+(const Fraction &A, const int &Bi);
-Fraction operator-(const Fraction &A, const int &Bi);
-Fraction operator*(const Fraction &A, const int &Bi);
-Fraction operator/(const Fraction &A, const int &Bi);
-Fraction operator%(const Fraction &A, const int &Bi);
-
-Fraction operator+(const int &Ai, const Fraction &B);
-Fraction operator-(const int &Ai, const Fraction &B);
-Fraction operator*(const int &Ai, const Fraction &B);
-Fraction operator/(const int &Ai, const Fraction &B);
-Fraction operator%(const int &Ai, const Fraction &B);
-
 Fraction abs(const Fraction &frac);
 long long int round(const Fraction &frac);
 long long int floor(const Fraction &frac);
@@ -39,17 +27,3 @@ bool operator<(const Fraction &A, const Fraction &B);
 bool operator>(const Fraction &A, const Fraction &B);
 bool operator<=(const Fraction &A, const Fraction &B);
 bool operator>=(const Fraction &A, const Fraction &B);
-
-bool operator==(const int &Ai, const Fraction &B);
-bool operator!=(const int &Ai, const Fraction &B);
-bool operator<(const int &Ai, const Fraction &B);
-bool operator>(const int &Ai, const Fraction &B);
-bool operator<=(const int &Ai, const Fraction &B);
-bool operator>=(const int &Ai, const Fraction &B);
-
-bool operator==(const Fraction &A, const int &Bi);
-bool operator!=(const Fraction &A, const int &Bi);
-bool operator<(const Fraction &A, const int &Bi);
-bool operator>(const Fraction &A, const int &Bi);
-bool operator<=(const Fraction &A, const int &Bi);
-bool operator>=(const Fraction &A, const int &Bi);

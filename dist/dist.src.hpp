@@ -10,6 +10,10 @@ class Dist
   void _normalize(void);
 
 public:
+  Dist(void) = default;
+  Dist(const Dist &other) = default;
+  Dist(const Fraction &frac);
+
   Dist &operator=(const Dist &other);
   // Dist &operator=(Dist &&other);
 
